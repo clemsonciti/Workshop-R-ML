@@ -5,7 +5,7 @@ exercises: 0
 questions:
 - "What is Machine Learning"
 objectives:
-- "Learng basic about Machine Learning"
+- "Learn the basics of Machine Learning"
 keypoints:
 - "Basic Machine Learning"
 ---
