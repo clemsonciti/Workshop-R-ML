@@ -22,5 +22,8 @@ Getting a good sample of data for training is critical. If the data are not repr
 
 Generally speaking, a complex algorithm can learn more complex associations, but sometimes too much complexity is a bad thing. If our algorithm allows for too much complexity, it will try to model the random associations between inputs and outputs that are specific to the training set. Because these associations don't generalize to the test set, the algorithm will make errors in the testing phase. This is called *overfitting*. 
 
+It is common to mix supervised and unsupervised methods within the same prediction process. For example, unsupervised methods can provide a simpler representation of the data and help against overfitting.
+
+
 {% include links.md %}
 
