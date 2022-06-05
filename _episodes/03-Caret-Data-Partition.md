@@ -52,8 +52,5 @@ print(model)
 predict1 <- predict(model,testing)
 ```
 
-## 3.3 Other Cross-Validation approach
-method: The resampling method: "boot", "cv", "LOOCV", "LGOCV", "repeatedcv", "timeslice", "none" and "oob"
-
 More information on model tuning using caret can be found [here](https://topepo.github.io/caret/model-training-and-tuning.html)
 
