@@ -30,20 +30,18 @@ Here we only touch some of the very basic commands that are useful for our Machi
 [caret cheatsheet](https://www.analyticsvidhya.com/infographics/Caret-Package-Infographic.pdf)
 
 ## 2.2 Why using Caret
-- R has so many ML algorithms, challenge to keep track, different syntax for different packages
+- Unified framework for a wide variety of ML algorithms, with consistent syntax
 - Possibly the biggest project in R
 - All in one supervised learning problem
 - Uniform interface
 - Standard pre & post processing
 
 ## 2.3 Install `caret`
+Start R Studio on OpenOD. Lets' pick 10 CPUs, 60 GB of memory, any interconnect, no GPU, R version 4.0.3.
+
 In R console:
 ```r
-install.packages("caret", dependencies = c("Depends", "Suggests"))
-```
-In R studio:
-```
-Select Tools\Install Packages and select caret from CRAN
+install.packages("caret")
 ```
 Once installed, load the caret package to make sure that it works:
 ```r
