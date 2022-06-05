@@ -57,6 +57,7 @@ There are several steps that we will use `caret` for. For preprocessing raw data
 ### 2.4.1 Visualize important variables
 Here we introduce the library `GGally`  with function `ggpairs` to help user in visualizing the input data
 ```r
+install.packages('GGally')
 library(GGally)
 ggpairs(data=iris,aes(colour=Species))
 ```
@@ -70,12 +71,15 @@ ggpairs(data=iris,aes(colour=Species))
 - Method 1: remove all missing `NA` values
 ```r
 data("airquality") # Here we use this sample data because it contains missing value
+summary (airquality)
 new_airquality1 <- na.omit(airquality)
+summary (new_airquality1)
 ``` 
 - Method 2: Set `NA` to mean value 
 ```r
 NA2mean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
 new_airquality2 <-replace(airquality, TRUE, lapply(airquality, NA2mean))
+summary (new_airquality2)
 ```
 - Method 3: Use `Impute` to handle missing values
 In statistics, imputation is the process of replacing missing data with substituted values. Because missing data can create problems for analyzing data, imputation is seen as a way to avoid pitfalls involved with listwise deletion of cases that have missing values. That is to say, when one or more values are missing for a case, most statistical packages default to discarding any case that has a missing value, which may introduce bias or affect the representativeness of the results. Imputation preserves all cases by replacing missing data with an estimated value based on other available information. Once all missing values have been imputed, the data set can then be analysed using standard techniques for complete data. There have been many theories embraced by scientists to account for missing data but the majority of them introduce bias. A few of the well known attempts to deal with missing data include: hot deck and cold deck imputation; listwise and pairwise deletion; mean imputation; non-negative matrix factorization; regression imputation; last observation carried forward; stochastic imputation; and multiple imputation.
@@ -85,9 +89,11 @@ Here we use `preProcess` function from `caret` to perform `bagImpute` (Bootstrap
 library(caret)
 PreImputeBag <- preProcess(airquality,method="bagImpute")
 DataImputeBag <- predict(PreImputeBag,airquality)
+summary (DataImputeBag)
 ```
-In addition to `bagImpute`, we also can use `knnImpute` (K-Nearest Neighbour Imputation)
-`knnImpute` can also be used to impute missing value, however, it standardize the data after Imputing:
+
+<--- In addition to `bagImpute`, we also can use `knnImpute` (K-Nearest Neighbour Imputation)
+`knnImpute` can also be used to impute missing value, however, it standardizes the data after Imputing:
 
 ```r
 MData <- airquality[,-c(1,5,6)]
@@ -100,4 +106,4 @@ RescaleDataM <- t(t(DataImputeKNN)*PreImputeKNN$std+PreImputeKNN$mean)
 
 **Note** 
 `bagImpute` is more powerful and computational cost than `knnImpute`
-
+-->
