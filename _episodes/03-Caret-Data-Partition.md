@@ -31,10 +31,11 @@ Here we use `createDataPartition` to randomly split 60% data for training and th
 ```r
 ind1 <- createDataPartition(y=iris$Species,p=0.6,list=FALSE,times=1)
 #list=FALSE, prevent returning result as a list
-#times=1 to create the resample size. Default value is 1.
+#times=1 to create one split
 training <- iris[ind1,]
 testing  <- iris[-ind1,] 
 ```
+
 <!---
 ## 3.2 Data spliting using `K-fold`: Cross validation approach
 The procedure has a single parameter called k that refers to the number of groups that a given data sample is to be split into. As such, the procedure is often called k-fold cross-validation. When a specific value for k is chosen, it may be used in place of k in the reference to the model, such as k=10 becoming 10-fold cross-validation.
