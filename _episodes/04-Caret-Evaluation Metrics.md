@@ -88,45 +88,6 @@ cor (predictions, mtcars$mpg)
 cor.test (predictions, mtcars$mpg)
 ```
 
-Pretty good! However, when evaluating your prediction, never forget to visually inspect the scatter plot. It will tell you a lot more than you can get from looking at a single number of the correlation coefficient.
+Pretty good! However, when evaluating your prediction, never forget to visually inspect the scatter plot. It will tell you a lot more than you can get from looking at a single number of the correlation coefficient. Below is a [famous example](https://en.wikipedia.org/wiki/Anscombe%27s_quartet) of four scatter plots, each representing correlation coefficient of 0.816: 
 
-![image](https://en.wikipedia.org/wiki/Anscombe%27s_quartet#/media/File:Anscombe's_quartet_3.svg)
-
-
-
-### 4.1.1 Correlation Coefficient (R) or Coefficient of Determination (R2):
-
-![image](https://user-images.githubusercontent.com/43855029/120700259-72274900-c47f-11eb-8959-a4bbe4eafccc.png)
-
-```r
-cor(prediction,testing)
-cor.test(prediction,testing)
-```
-
-### 4.1.2 Root Mean Square Error (RMSE) or Mean Square Error (MSE)
-
-![image](https://user-images.githubusercontent.com/43855029/120700533-c5010080-c47f-11eb-8050-b1cd8c63746e.png)
-
-The postResample function gives RMSE, R2 and MAE at the same time:
-
-```r
-postResample(prediction,testing$Ozone)
-
-```
-
-## 4.2. Classification model Evaluation Metrics
-
-### 4.2.1 Confusion Matrix
-- A confusion matrix is a technique for summarizing the performance of a classification algorithm.
-- You can learn more about Confusion Matrix [here](https://www.analyticsvidhya.com/blog/2020/04/confusion-matrix-machine-learning/)
-
-For binary output (classification problem with only 2 output type, also most popular):
-
-![image](https://user-images.githubusercontent.com/43855029/120687356-efe35880-c46f-11eb-950f-5feef237a4c1.png)
- 
- ```r
- confusionMatrix(predict,testing)
- ```
-
-
-
+![image](https://thumbnails-visually.netdna-ssl.com/anscombes-quartet_50290d2c47e85.png)
