@@ -9,10 +9,13 @@ objectives:
 keypoints:
 - "Regression training"
 ---
-# 5 Supervised Learning training
+# 5 More examples of prediction
+
+CARET supports a huge number of prediction methods; see the list [here](https://rdrr.io/cran/caret/man/models.html). Let's do a few examples.
+
 ## 5.1 For Continuous output
-### 5.1.1 Train model using Linear Regression
-Pre-processing data and create partition
+### 5.1.1 Linear regression with one predictor
+Pre-process the data and create a partition
 ```r
 library(caret)
 data(airquality)
@@ -26,29 +29,22 @@ indT <- createDataPartition(y=airquality_imp$Ozone,p=0.6,list=FALSE)
 training <- airquality_imp[indT,]
 testing  <- airquality_imp[-indT,]
 ```
-Fit a Linear model using `method=lm`
+Now, let's build a model using a single predictor. Let's predict `Ozone` from one variable, temperature (`Temp`), using a linear model (`method=lm`):
 ```r
 ModFit <- train(Ozone~Temp,data=training,
                 preProcess=c("center","scale"),
                 method="lm")
 summary(ModFit$finalModel)
 ```
-Apply trained model to testing data set and evaluate output
+Apply trained model to testing data set and evaluate output:
 ```r
 prediction <- predict(ModFit,testing)
 cor.test(prediction,testing$Ozone)
-postResample(prediction,testing$Ozone)
 ```
 
-### 5.1.2 Train model using Multi-Linear Regression
-From the above model, the `postResample` only show the reasonable result:
-```r
-> postResample(prediction,testing$Ozone)
-      RMSE   Rsquared        MAE 
-27.6743204  0.4313953 18.5866936 
-```
-The reason is that we only build the model with 1 input `Temp`.
-In this section, we will build the model with more input `Solar Radiation, Wind, Temperature`:
+### 5.1.2 Linear regression with multiple predictors (Multi-Linear Regression)
+
+Now, let's predict `Ozone` from three predictors: solar radiation, wind, and temperature. 
 ```r
 modFit2 <- train(Ozone~Solar.R+Wind+Temp,data=training,
                  preProcess=c("center","scale"),
@@ -56,27 +52,20 @@ modFit2 <- train(Ozone~Solar.R+Wind+Temp,data=training,
 summary(modFit2$finalModel)
 
 prediction2 <- predict(modFit2,testing)
-
 cor.test(prediction2,testing$Ozone)
-postResample(prediction2,testing$Ozone)
 ```
-Output is therefore better with smaller RMSE and higher Rsquared:
-```r
-> postResample(prediction2,testing$Ozone)
-      RMSE   Rsquared        MAE 
-24.3388752  0.5512334 16.5798881 
-```
+We see that our correlation has improved when we used more predictors. 
+
+
+<!---
 ### 5.1.3 Train model using Stepwise Linear Regression
 It’s a step by step Regression to determine which covariates set best match with the dependent variable. Using AIC as criteria:
 
 ```r
 modFit_SLR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="lmStepAIC")
 summary(modFit_SLR$finalModel)
-
 prediction_SLR <- predict(modFit_SLR,testing)
-
 cor.test(prediction_SLR,testing$Ozone)
-postResample(prediction_SLR,testing$Ozone)
 ```
 
 ```r
@@ -84,48 +73,39 @@ postResample(prediction_SLR,testing$Ozone)
       RMSE   Rsquared        MAE 
 25.0004212  0.5239849 17.0977421 
 ```
+-->
 
-### 5.1.4 Train model using Polynomial Regression
+### 5.1.3 Train model using Polynomial Regression
 
 ![image](https://user-images.githubusercontent.com/43855029/122609104-6c1e9400-d04b-11eb-984c-ed20f0926451.png)
 
-In this study, let use polynomial regression with degree of freedom=3
+In this study, let's use polynomial regression with degrees of freedom=3:
 
 ```r
 modFit_poly <- train(Ozone~poly(Solar.R,3)+poly(Wind,3)+poly(Temp,3),data=training,
                      preProcess=c("center","scale"),
                      method="lm")
 summary(modFit_poly$finalModel)
-
 prediction_poly <- predict(modFit_poly,testing)
-
 cor.test(prediction_poly,testing$Ozone)
-postResample(prediction_poly,testing$Ozone)
 ```
 
-```r
-> postResample(prediction_poly,testing$Ozone)
-      RMSE   Rsquared        MAE 
-20.8369196  0.6611866 13.7168643 
-```
-
-### 5.1.5 Train model using Principal Component Regression
-Linear Regression using the output of a Principal Component Analysis (PCA). 
-PCR is skillful when data has lots of highly correlated predictors
+### 5.1.4 Train model using Principal Component Regression
+Principal Component Regression is a combination of linear regression and principal component analysis; it is particularly useful when the predictors are highly correlated. 
 
 ```r
+install.packages("pls")
+library(pls)
 modFit_PCR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="pcr")
 summary(modFit_PCR$finalModel)
-
 prediction_PCR <- predict(modFit_PCR,testing)
-
 cor.test(prediction_PCR,testing$Ozone)
-postResample(prediction_PCR,testing$Ozone)
 ```
+
 ## 5.2 For categorical output
 ### 5.2.1 Train model using Logistic Regression
-- Logistic regression is another technique borrowed by machine learning from the field of statistics. It is the go-to method for binary classification problems (problems with two class values).
-- Typical binary classification: True/False, Yes/No, Pass/Fail, Spam/No Spam, Male/Female
+- Logistic regression is a common method for binary classification problems (when outcomes fall into two categories).
+- Typical binary classification: True/False, Yes/No, Pass/Fail
 - Unlike linear regression, the prediction for the output is transformed using a non-linear function called the logistic function.
 - The standard logistic function has formulation:
  
