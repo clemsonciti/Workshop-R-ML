@@ -18,6 +18,10 @@ Two types of machine learning:
 2. *Testing* the algotrithm: we obtain a set of inputs that were not used in the training, and use the algorithm to estimate the outputs. 
 - Unsupervised machine learning: here, we don't look at the outputs, and try to discover patterns in the inputs (for example, clusters of data).
 
+The output variables can be numerical or categorical. An example of a numerical output is predicting how long it takes a person to recover from a trauma, based on the severity of the trauma, person's age, gender, etc. If we try to predict whether the person will recover or not, the output is categorical (with two categories: recoverers and non-recoverers). A model that predicts a numerical outcome is a *regression* model; a model which predicts a categorical outcome is a *classification* model.  
+
+There is a distinction between 
+
 Getting a good sample of data for training is critical. If the data are not representative of the general population, the algorithm will perform badly in the testing phase. However, in real world, any finite sample of data cannot include all the information about the general population, and therefore any machine learning algorithm is *biased* by the training sample.
 
 Generally speaking, a complex algorithm can learn more complex associations, but sometimes too much complexity is a bad thing. If our algorithm allows for too much complexity, it will try to model the random associations between inputs and outputs that are specific to the training set. Because these associations don't generalize to the test set, the algorithm will make errors in the testing phase. This is called *overfitting*. 
