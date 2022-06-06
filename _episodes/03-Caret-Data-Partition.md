@@ -22,7 +22,7 @@ The more data you have for training, the more hope you can have that the model w
 - leave-one-out cross-validation ("LOO"). Here, we maximize the training set: only one observation is used for test, and remaining observations are used for training. This is done in a loop, so each observation gets its turn to be in the test set. This procedure is common when you work with small datasets.
 - 80-20 split: 80% of the data are used for training, and 20% for testing. Again, this is done in a loop. One strategy is to get a random sample of 20% of the data, in a loop; at the next iteration, you can get another random sample of 20% etc. Another strategy is to first use the first 20%, at the next iteration you use the next 20%, etc; this way, you can have 5 iterations to go through the whole data set. This is also called 5-fold cross-validation.
 - A general idea of *k-fold cross-validation* is to break up the data into k chunks and, at each iteration, use one of the chunks for testing and the rest of the data for training.
-<img src="../fig/5fold_cv.png">
+<img src="../fig/5fold_cv.png" width=600>
 - split-half: the data are evenly split into training and test sets. First, you use on half for trainig and the other for testing; second, you use the second half for training and the first half for testing. The amount of training data is relatively small, but this way is sometimes used if the stability of the model is just as important as the classification accuracy.
 
 Here we use `createDataPartition` to randomly split 60% data for training and the rest for testing:
