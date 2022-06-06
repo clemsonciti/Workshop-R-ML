@@ -112,7 +112,7 @@ cor.test(prediction_PCR,testing$Ozone)
 ![image](https://user-images.githubusercontent.com/43855029/114233181-f7dcbb80-994a-11eb-9c89-58d7802d6b49.png)
 
 <!--- ![image](https://user-images.githubusercontent.com/43855029/114233189-fb704280-994a-11eb-9019-8355f5337b37.png) -->
-<img src="../fig/logreg.png">
+<img src="../fig/logreg.png" width=600 />
 
 In this example, we use `spam` data set from package `kernlab`.
 This is a data set collected at Hewlett-Packard Labs, that classifies **4601** e-mails as spam or non-spam. In addition to this class label there are **57** variables indicating the frequency of certain words and characters in the e-mail.
