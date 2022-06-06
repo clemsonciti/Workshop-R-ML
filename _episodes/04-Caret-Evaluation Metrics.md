@@ -10,7 +10,7 @@ keypoints:
 - "Caret"
 ---
 
-# 4 Evaluation Metrics 
+# 4 Evaluation of prediction 
 
 Here, we will discuss how we can evaluate our prediction. This process is somewhat different depending on whether we predict numerical outouts (regression) or categorical outputs (classification).
 
@@ -58,7 +58,7 @@ ggplot(cm_df, aes(x = Prediction, y = Reference, fill = value)) +
 - It measures how good or bad is your Machine Learning model
 - Different Evaluation Metrics are used for Regression model (Continuous output) or Classification model (Categorical output).
 
-## 4.2 Regression model Evaluation Metrics
+## 4.2 Regression model 
 
 Now, let's do rergession -- that is, let's try to predict a numerical (continuous) outcome. We will use the `mtcars` dataset to predict miles-per-gallon from the car's weight, number of cylinders, and other variables. This time, we will do a leave-one-out: for each car, we will exclude it from the training set; use all remaining cars to train the model; and apply the model to predict the MPG of the excluded car. We will use Generalized Linear Regression (GLM) as the method of our prediction.
 
