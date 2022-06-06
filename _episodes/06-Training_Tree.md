@@ -11,11 +11,14 @@ keypoints:
 ---
 # Supervised Learning training
 
-## Train model using Decision Tree
--   Tree based learning algorithms are considered to be one of the best and mostly used supervised learning methods.
--   Tree based methods empower predictive models with high accuracy, stability and ease of interpretation
--   Non-parametric and non-linear relationships
--   Types: Categorical and Continuous
+## Training the model using Decision Trees
+-   Decision trees can take inputs where some variables are numerical and some are categorical
+-   Very handy when dealing with demographic data (gender, age, education level)
+-   Works for continuous or categorical outputs
+-   Very flexible, can capture complex relationships between inputs and outputs
+-   Easy to interpret
+-   Training could be slow
+-   Prone to overfitting
 ![image](https://user-images.githubusercontent.com/43855029/114233972-198a7280-994c-11eb-9f4f-da4ed958961e.png)
 
 ### Spliting algorithm
@@ -24,8 +27,9 @@ keypoints:
 - Cross-Entropy & Information gain (Categorical)
 - Reduction Variance (Continuous)
 
+<!---
 ### Pros & Cons
-![image](https://user-images.githubusercontent.com/43855029/114234120-548ca600-994c-11eb-889e-e8ec6d313e52.png)
+![image](https://user-images.githubusercontent.com/43855029/114234120-548ca600-994c-11eb-889e-e8ec6d313e52.png) -->
 
 ### Implementation
 Here we will use `iris` data
@@ -44,6 +48,7 @@ ModFit_rpart <- train(Species~.,data=training,method="rpart",
 # gini can be replaced by chisquare, entropy, information
 
 #fancier plot
+install.packages("rattle")
 library(rattle)
 fancyRpartPlot(ModFit_rpart$finalModel)
 ```
@@ -62,11 +67,13 @@ ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
 ## Train model using Random Forest
 ![image](https://user-images.githubusercontent.com/43855029/115076000-f3278280-9ec9-11eb-89b4-b07f3713b105.png)
 
-- Random Forest is considered to be a panacea of all data science problems. On a funny note, when you can’t think of any algorithm (irrespective of situation), use random forest!
-- Opposite to Decision Tree, Random Forest use bootstrapping technique to grow multiple tree
-- Random Forest is a versatile machine learning method capable of performing both regression and classification tasks. 
-- It is a type of ensemble learning method, where a group of weak models combine to form a powerful model.
-- The end output of the model is like a black box and hence should be used judiciously.
+- A single decision tree is prone to overfitting. A solution is to grow a number of decision trees, i.e. a forest.
+- We use portions of the data to grow a tree for each portion (bootstrapping)
+- All trees are used to predict the output, and the final prediction is the majority vote (in classification) or the average (in regression)
+- Very versatile, good generalization (especially for classification), handles missing data well
+- Quite slow and hard to interpret (prone to be used as a "black box")
+
+<!---
 ### Detail explaination
 - If there are M input variables, a number m<M is specified such that at each node, m variables are selected at random out of the M. The best split on these m is used to split the node. The value of m is held constant while we grow the forest.
 - Each tree is grown to the largest extent possible and  there is no pruning.
@@ -75,7 +82,7 @@ ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
 
 ### Pros & Cons of Random Forest
 ![image](https://user-images.githubusercontent.com/43855029/114235213-daf5b780-994d-11eb-83f8-ac7520749dbe.png)
-
+-->
 ### Implementation of Random Forest
 
 ```r
@@ -90,4 +97,4 @@ ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114235296-fb257680-994d-11eb-93ff-54702cbf87b8.png)
 
-We can see that Random Forest result has better prediction than Decision Tree
+We can see that Random Forest result has better prediction than the Decision Tree.
