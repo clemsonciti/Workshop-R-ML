@@ -63,6 +63,8 @@ ggpairs(data=iris,aes(colour=Species))
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114196055-01e8c500-991f-11eb-8eaf-816f25e6c534.png)
 
+This image contains an extensive visual summary of the relationships between variables in our data. Interestingly, you can see an exammple of [Simpson's paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox) in the relationship between sepal width and sepal length: the correlation is negative for all data, but positive within each data group!
+
 ### 2.4.2 Pre-processing with missing value
 - Most of the time the input data has missing values (`NA, NaN, Inf`) due to data collection issue (power, sensor, personel). 
 - There are three main problems that missing data causes: missing data can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency
