@@ -120,6 +120,7 @@ More information on this data set can be found [here](https://rdrr.io/cran/kernl
 
 Train the model:
 ```r
+install.packages("kernlab")
 library(kernlab)
 data(spam)
 names(spam)
@@ -141,6 +142,7 @@ Plotting ROC and computing AUC:
 
 ```r
 #Need to install package ROCR
+install.packages("ROCR")
 library(ROCR)
 pred_prob <- predict(ModFit_glm,testing, type = "prob")
 head(pred_prob)
