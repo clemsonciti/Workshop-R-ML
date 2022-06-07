@@ -48,6 +48,7 @@ We can visualize the confusion matrix:
 
 ```r
 library(reshape2)
+cm <- confusionMatrix (predictions,testing$Species)
 cm_df <- melt(cm$table)
 ggplot(cm_df, aes(x = Prediction, y = Reference, fill = value)) +
  geom_raster() + scale_fill_distiller(palette = "Spectral") 
