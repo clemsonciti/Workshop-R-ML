@@ -24,4 +24,4 @@ A more robust strategy is to be OK that we won't have 100% accuracy on the train
 
 Historically, the first classifier was designed by Ronald Fisher in 1936; it is now called Fisher's Linear Discriminant, or simply Linear Discriminant. He made the assumption that the two classes are both sampled from two-dimensional Gaussian distribution:
 
-<img src="../fig/GAUSS_2D.tif" width="300" />
+<img src="../fig/GAUSS_2D.png" width="300" />
