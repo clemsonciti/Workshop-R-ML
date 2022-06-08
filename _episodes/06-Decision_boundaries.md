@@ -14,4 +14,4 @@ Let's discuss the problem of multivariate classification. "Multivariate" means t
 consider the interaction between the input variables when we classify them. For simplicity, we assume we have two input variables, x and y. For
 this two-dimensional case, we can plot the data graphically. Let's say we have two classes; we will represent them with blue squares and red circles.
 
-<img src="../fig/twoclasses.png">
+<img src="../fig/twoclasses.png" width="400" />
