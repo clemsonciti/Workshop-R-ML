@@ -9,7 +9,6 @@ objectives:
 keypoints:
 - "Decision Tree, Random Forest"
 ---
-# Supervised Learning training
 
 ## Training the model using Decision Trees
 -   Decision trees can take inputs where some variables are numerical and some are categorical
