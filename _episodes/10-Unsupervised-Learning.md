@@ -10,21 +10,10 @@ keypoints:
 - "K-mean"
 ---
 
-# 14 Unsupervised Learning
-![image](https://user-images.githubusercontent.com/43855029/114584282-82c1fc80-9c50-11eb-9342-41e5592e7b67.png) ![image](https://user-images.githubusercontent.com/43855029/114584314-89507400-9c50-11eb-9c54-5a589075fd48.png)
 
-- Used when no feature output data
-- Often used for clustering data
-- Typical method:
-```
-K-means clustering
-Hierarchical clustering
-Ward clustering
-Partition Around Median (PAM)
-```
-## 14.1 K-means clustering
-### 14.1.1 Explanation of K-means clustering method:
-- Given a set of data, we choose K=2 clusters to be splited:
+## K-means clustering
+### Explanation of K-means clustering method:
+- Given a set of data, we choose K=2 clusters to be split into:
 
 ![image](https://user-images.githubusercontent.com/43855029/114584415-a5ecac00-9c50-11eb-8919-807f83ddf23a.png)
 
@@ -32,7 +21,7 @@ Partition Around Median (PAM)
 
 ![image](https://user-images.githubusercontent.com/43855029/114584573-d16f9680-9c50-11eb-9dc4-8d918919f565.png)
 
-- Compute the distance between 2 centroid red X and blue X with all the points (for instance using Euclidean distance) and compare with each other. 2 groups are created with shorter distance to 2 centroids
+- For both centroids, compute the distance to all the points and compare with each other. 2 groups are created with shorter distance to 2 centroids
 
 ![image](https://user-images.githubusercontent.com/43855029/114584860-0bd93380-9c51-11eb-9afc-3bb9510e9c34.png)
 
@@ -48,12 +37,12 @@ Partition Around Median (PAM)
 
 ![image](https://user-images.githubusercontent.com/43855029/114585223-6b374380-9c51-11eb-8663-27474956ec61.png)
 
-### 14.1.2 Example with K=3
+### Example with K=3
 ![image](https://user-images.githubusercontent.com/43855029/114585361-8e61f300-9c51-11eb-965e-dc4d57e9c0eb.png)
 
 ![image](https://user-images.githubusercontent.com/43855029/114585502-b81b1a00-9c51-11eb-8015-973216b450ce.png)
 
-### 14.1.3 Implementation
+### Implementation
 ```r
 library(ggplot2)
 library(factoextra)
@@ -69,8 +58,8 @@ fviz_cluster(km,data=iris[,3:4])
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114585677-e567c800-9c51-11eb-8cb4-6db443f0698b.png)
 
-### 14.1.4 How to find optimal K values:
-#### 14.1.4.1 Elbow approach
+### How to find optimal K values:
+#### Elbow approach
 - Similar to KNN method for supervised learning, for K-means approach, we are able to use Elbow approach to find the optimal K values.
 - The Elbow approach ues the Within-Cluster Sum of Square (WSS) to measure the compactness of the clusters:
 ![image](https://user-images.githubusercontent.com/43855029/114587068-4d6ade00-9c53-11eb-932d-0de0c9edef83.png)
@@ -81,6 +70,7 @@ fviz_nbclust(iris[,3:4], kmeans, method = "wss")
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114586165-5e671f80-9c52-11eb-9ad1-e9170fd6b5ef.png)
 
+<!---
 #### 14.1.4.2 Gap-Statistics approach
 - Developed by Prof. Tibshirani et al in Stanford
 - Applied to any clustering method (K-means, Hierarchical)
@@ -101,3 +91,4 @@ fviz_gap_stat(gap_stat)
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114586485-b9007b80-9c52-11eb-9aae-24effc612e09.png)
 
+-->
