@@ -53,5 +53,5 @@ confusionMatrix(testing$Species,predict_KNN)
 
 Here, we go from K=1 to K=25. The Caret `train` function takes care of creating the validation set and applying these value of K to classify it.
 
-The process of determining the optimal value of the hyperparameter is called [hyperparameter optimization](https://en.wikipedia.org/wiki/Hyperparameter_optimization), and it is very useful. For example, in SVM the hyperparameter is the cost of errors; we can loop through different settings of cose to determine the best one.
+The process of determining the optimal value of the hyperparameter is called [hyperparameter optimization](https://en.wikipedia.org/wiki/Hyperparameter_optimization), and it is very useful. For example, in SVM the hyperparameter is the cost of errors; we can loop through different settings of cose to determine the best one. However, this might take a long time. Luckily, this process is highly parallelizable, so the Palmetto cluster is a good place to do it.
 
