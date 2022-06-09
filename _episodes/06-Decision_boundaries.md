@@ -1,13 +1,15 @@
 ---
-title: "Clssificatio with decision boundaries"
+title: "Classification with decision boundaries"
 teaching: 20
 exercises: 0
 questions:
-- "How to train a Machine Learning model using Tree-based model"
+- "Classifying with decision boundaries"
 objectives:
-- "Learn to use different Tree-based algorithm for Machine Learning training"
+- "How to classify with a method that uses a decision boundary"
 keypoints:
-- "Decision Tree, Random Forest"
+- "Linear Discriminant"
+- "Quadratic Discriminant"
+- "Support Vector Machines"
 ---
 
 Let's discuss the problem of multivariate classification. "Multivariate" means that we have more than one input variable, and we will 
