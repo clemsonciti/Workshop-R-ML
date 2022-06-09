@@ -1,5 +1,5 @@
 ---
-title: "K-Nearest Neighbour"
+title: "Nearest Neighbours Classification"
 teaching: 20
 exercises: 0
 questions:
